@@ -1,0 +1,19 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    height: 91px;
+    padding: 0 90px 0 30px;
+}
+
+.logo {
+    width: 178px;
+    height: 60px;
+}
+
+a {
+    color: white;
+    text-decoration: inherit;
+    font-size: 24px;
+}

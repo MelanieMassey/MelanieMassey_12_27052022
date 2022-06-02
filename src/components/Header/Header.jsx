@@ -1,0 +1,17 @@
+// import { Link } from "react-router-dom"
+import './Header.css'
+import logo from '../../assets/logo.png'
+
+function Header() {
+    return(
+        <header>
+            <img src={logo} className="logo" alt="logo de SportSee" />
+            <a href=''>Accueil</a>
+            <a href=''>Profil</a>
+            <a href=''>Réglage</a>
+            <a href=''>Communauté</a>
+        </header>
+    )
+}
+
+export default Header;
