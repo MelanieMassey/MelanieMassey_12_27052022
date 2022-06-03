@@ -1,0 +1,10 @@
+.activityBox {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    background-color: var(--lightText);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
