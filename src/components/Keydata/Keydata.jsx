@@ -6,11 +6,11 @@ function Keydata({className, img, data, dataType}) {
 
 
     return(
-        <div className={className}>
-            <div className={"dataImg " + className + "Img"}>
-                <img src={img} alt={className}/>
+        <div className={"keyData " + className}>
+            <div className={"dataImg " + className + "Background"}>
+                <img className={className + "Img"} src={img} alt={className}/>
             </div>
-            <div className=''>
+            <div className='dataText'>
                 <p>{data}</p>
                 <p>{dataType}</p>
             </div>

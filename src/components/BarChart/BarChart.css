@@ -1,0 +1,27 @@
+.dailyActivityChartHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 15px;
+}
+
+.dailyActivityChartHeader ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.dailyActivityChartHeader ul li{
+    font-size: 14px;
+    margin-left: 2rem;
+}
+
+.dailyActivityChartHeader ul li::marker{
+    font-size: 24px;
+}
+
+.redDot::marker {
+    color: var(--main);
+}

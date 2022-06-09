@@ -4,7 +4,10 @@
   --lightText: #FFFFFF;
   --darkText: #000000;
   --lightBackground: #FBFBFB;
-
+  --calorieBackground: rgba(255, 0, 0, 0.1);
+  --proteineBackground: rgba(74, 184, 255, 0.1);
+  --glucideBackground: rgba(249, 206, 35, 0.1);
+  --lipideBackground: rgba(253, 81, 129, 0.1);
 }
 
 h1 {
@@ -45,6 +48,7 @@ aside {
   height: 100%;
   background-color: transparent;
   margin-left: 220px;
+  margin-right: 90px;
 }
 
 .dashboardHeader p {
@@ -57,10 +61,11 @@ aside {
   grid-template-columns: repeat(4,1fr);
   grid-template-rows: repeat(2, 2fr);
   grid-template-areas: ". . . ."
-    "duration repartition score .";
+  "duration repartition score .";
+  gap: 30px;
 }
 
-.dailyActivity {
+.dailyActivityChart {
   background-color: var(--lightBackground);
   height: 320px;
   border-radius: 5px;
@@ -79,7 +84,7 @@ aside {
   grid-area: score;
 }
 
-.keyData {
+.keyDataContainer {
   grid-column: 4/5;
   grid-row: 1/3;
 }
