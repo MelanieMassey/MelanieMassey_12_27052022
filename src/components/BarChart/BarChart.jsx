@@ -3,7 +3,9 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function DailyActivityChart(data) {
-    console.log(data)
+    // console.log(data)
+
+    // FAIRE fonction pour déterminer le min et le max des axes Y
     
     return (
     <div className='dailyActivityChart'>

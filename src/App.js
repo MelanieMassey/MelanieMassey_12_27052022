@@ -2,7 +2,7 @@ import './style/App.css';
 import Header from './components/Header/Header';
 import Activity from './components/Activity/Activity';
 import Keydata from './components/Keydata/Keydata';
-import {getMainActivity, getMainInformation} from './data/dataManager';
+import {getMainActivity, getMainInformation, getAverageSessions, getPerformance} from './data/dataManager';
 import imgMeditation from './assets/meditation.png';
 import imgSwimming from './assets/swimming.png';
 import imgCycling from './assets/cycling.png';
@@ -11,17 +11,24 @@ import energy from './assets/energy.png';
 import proteins from './assets/proteins.png';
 import glucides from './assets/glucides.png';
 import lipides from './assets/lipides.png';
+import DailyActivityChart from './components/BarChart/BarChart';
+import AverageSessionsChart from './components/LineChart/LineChart';
+import ActivityTypeChart from './components/RadarChart/RadarChart';
 
 // utilisation des données temporairement
 import * as Mock from '../src/data/data.js'
-import DailyActivityChart from './components/BarChart/BarChart';
+
 
 function App() {
   console.log(Mock)
   const mainInformation = getMainInformation(Mock);
-  console.log(mainInformation)
+  // console.log(mainInformation)
   const mainActivity = getMainActivity(Mock)
-  console.log(mainActivity.sessions)
+  // console.log(mainActivity.sessions)
+  const averageSessions = getAverageSessions(Mock)
+  // console.log(averageSessions)
+  const activityType = getPerformance(Mock)
+  console.log(activityType.kind)
 
   return (
     <div className="App">
@@ -42,9 +49,9 @@ function App() {
             <p>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</p>
           </header>
           <div className='dashboardContent'>
-            <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brülées (kCal)"/>
-            <div className='averageSessions'></div>
-            <div className='activityType'></div>
+            <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
+            <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
+            <ActivityTypeChart data={activityType.kind} />
             <div className='todayScore'></div>
             <div className='keyDataContainer'>
               <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
