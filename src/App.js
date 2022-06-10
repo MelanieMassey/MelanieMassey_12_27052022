@@ -28,7 +28,7 @@ function App() {
   const averageSessions = getAverageSessions(Mock)
   // console.log(averageSessions)
   const activityType = getPerformance(Mock)
-  console.log(activityType.kind)
+  console.log(activityType.data)
 
   return (
     <div className="App">
@@ -51,7 +51,7 @@ function App() {
           <div className='dashboardContent'>
             <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
             <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
-            <ActivityTypeChart data={activityType.kind} />
+            <ActivityTypeChart data={activityType} />
             <div className='todayScore'></div>
             <div className='keyDataContainer'>
               <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
