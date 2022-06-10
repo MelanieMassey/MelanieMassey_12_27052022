@@ -14,21 +14,31 @@ import lipides from './assets/lipides.png';
 import DailyActivityChart from './components/BarChart/BarChart';
 import AverageSessionsChart from './components/LineChart/LineChart';
 import ActivityTypeChart from './components/RadarChart/RadarChart';
+import ScoreChart from './components/RadialChart/RadialChart';
 
 // utilisation des données temporairement
 import * as Mock from '../src/data/data.js'
+import { useEffect, useState } from 'react';
 
 
 function App() {
   console.log(Mock)
-  const mainInformation = getMainInformation(Mock);
-  // console.log(mainInformation)
+  const [mainInformation, setMainInfo] = useState(null);
+  console.log(mainInformation) 
   const mainActivity = getMainActivity(Mock)
   // console.log(mainActivity.sessions)
   const averageSessions = getAverageSessions(Mock)
   // console.log(averageSessions)
   const activityType = getPerformance(Mock)
-  console.log(activityType.data)
+  // console.log(activityType.data)
+  useEffect(()=>{
+    (async ()=>{
+      setMainInfo(await getMainInformation());
+    })()
+    
+  }, [])
+
+  if (mainInformation === null) return (<h1>loading</h1>);
 
   return (
     <div className="App">
@@ -45,14 +55,14 @@ function App() {
         </aside>
         <div className='dashboardSection'>
           <header className='dashboardHeader'>
-            <h1>Bonjour {mainInformation.userInfos.firstName}</h1>
+            <h1>Bonjour <span>{mainInformation.userInfos.firstName}</span></h1>
             <p>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</p>
           </header>
           <div className='dashboardContent'>
             <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
             <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
             <ActivityTypeChart data={activityType} />
-            <div className='todayScore'></div>
+            <ScoreChart data={mainInformation.todayScore} />
             <div className='keyDataContainer'>
               <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
               <Keydata className="proteins" img={proteins} data={mainInformation.keyData.proteinCount} dataType="Protéines"/>

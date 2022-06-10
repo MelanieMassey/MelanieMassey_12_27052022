@@ -17,6 +17,10 @@ h1 {
   padding: 3rem 0 1rem;
 }
 
+h1 span {
+  color: var(--main);
+}
+
 
 /*Menu secondaire des activités*/
 aside {
