@@ -1,7 +1,4 @@
 import './style/App.css';
-import Header from './components/Header/Header';
-import Activity from './components/Activity/Activity';
-import Keydata from './components/Keydata/Keydata';
 import {getMainActivity, getMainInformation, getAverageSessions, getPerformance} from './data/dataManager';
 import imgMeditation from './assets/meditation.png';
 import imgSwimming from './assets/swimming.png';
@@ -11,6 +8,9 @@ import energy from './assets/energy.png';
 import proteins from './assets/proteins.png';
 import glucides from './assets/glucides.png';
 import lipides from './assets/lipides.png';
+import Header from './components/Header/Header';
+import Activity from './components/Activity/Activity';
+import Keydata from './components/Keydata/Keydata';
 import DailyActivityChart from './components/BarChart/BarChart';
 import AverageSessionsChart from './components/LineChart/LineChart';
 import ActivityTypeChart from './components/RadarChart/RadarChart';
@@ -22,20 +22,36 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
-  console.log(Mock)
+  
+  // Récupération des données USER_MAIN_DATA => Infos personnelles, today score et key data
   const [mainInformation, setMainInfo] = useState(null);
   console.log(mainInformation) 
-  const mainActivity = getMainActivity(Mock)
+
+  const [mainActivity, setMainActivity] = useState(null);
+  console.log(mainActivity)
+
+  const [averageSessions, setAverageSessions] = useState(null);
+  console.log(averageSessions)
+
+  const [activityType, setActivityType] = useState(null);
+  console.log(activityType)
+
+  //*RECUPERATION DONNEES DEPUIS MOCK*//
+  //console.log(Mock)
+  // const mainActivity = getMainActivity(Mock)
   // console.log(mainActivity.sessions)
-  const averageSessions = getAverageSessions(Mock)
+  //const averageSessions = getAverageSessions(Mock)
   // console.log(averageSessions)
-  const activityType = getPerformance(Mock)
-  // console.log(activityType.data)
+  // const activityType = getPerformance(Mock)
+  // console.log(activityType)
+
   useEffect(()=>{
     (async ()=>{
       setMainInfo(await getMainInformation());
+      setMainActivity(await getMainActivity());
+      setAverageSessions(await getAverageSessions());
+      setActivityType(await getPerformance());
     })()
-    
   }, [])
 
   if (mainInformation === null) return (<h1>loading</h1>);

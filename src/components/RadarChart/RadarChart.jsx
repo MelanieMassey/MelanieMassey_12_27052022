@@ -2,11 +2,11 @@ import './RadarChart.css';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 function ActivityTypeChart(data) {
-    // console.log(data.data.kind)
+    console.log(data.data.data)
 
-    function setTicks() {
-        data.data.kind.map()
-    }
+    // function setTicks() {
+    //     data.data.kind.map()
+    // }
 
     return (
         <div className='activityType'>
