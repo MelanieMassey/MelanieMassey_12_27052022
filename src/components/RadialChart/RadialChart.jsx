@@ -29,4 +29,4 @@ function ScoreChart(data) {
     )
 }
 
-export default ScoreChart;
+//export default ScoreChart;

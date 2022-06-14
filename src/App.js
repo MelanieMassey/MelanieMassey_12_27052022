@@ -1,5 +1,7 @@
 import './style/App.css';
 import {getMainActivity, getMainInformation, getAverageSessions, getPerformance} from './data/dataManager';
+import { useEffect, useState } from 'react';
+// Assets
 import imgMeditation from './assets/meditation.png';
 import imgSwimming from './assets/swimming.png';
 import imgCycling from './assets/cycling.png';
@@ -9,17 +11,17 @@ import proteins from './assets/proteins.png';
 import glucides from './assets/glucides.png';
 import lipides from './assets/lipides.png';
 import Header from './components/Header/Header';
+// Components
 import Activity from './components/Activity/Activity';
 import Keydata from './components/Keydata/Keydata';
 import DailyActivityChart from './components/BarChart/BarChart';
 import AverageSessionsChart from './components/LineChart/LineChart';
 import ActivityTypeChart from './components/RadarChart/RadarChart';
-import ScoreChart from './components/RadialChart/RadialChart';
+//import ScoreChart from './components/RadialChart/RadialChart';
+import ScoreChart from './components/PieChart/PieChart';
 
-// utilisation des données temporairement
-import * as Mock from '../src/data/data.js'
-import { useEffect, useState } from 'react';
-
+// utilisation des données  
+// import * as Mock from '../src/data/data.js'
 
 function App() {
   
