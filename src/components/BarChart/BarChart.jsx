@@ -3,7 +3,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 function DailyActivityChart(data) {
-    console.log(data)
+    //console.log(data)
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -16,7 +16,9 @@ function DailyActivityChart(data) {
         }
       
         return null;
-      };
+    };
+
+    const formattedDate=(value)=>(new Date(value)).getDate()
  
     return (
     <div className='dailyActivityChart'>
@@ -37,7 +39,11 @@ function DailyActivityChart(data) {
             >
                 
                 <CartesianGrid vertical={false} />
-                <XAxis dataKey={data.xDataKey} tickLine={false}/>
+                <XAxis 
+                    dataKey={data.xDataKey} 
+                    tickLine={false}
+                    tickFormatter={formattedDate}
+                />
                 <YAxis 
                     dataKey={data.data1} 
                     yAxisId='kilogram' 
