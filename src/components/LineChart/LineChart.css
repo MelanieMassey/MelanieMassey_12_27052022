@@ -1,0 +1,11 @@
+.custom-tooltip {
+    width: 39px;
+    height: 25px;
+    background-color: var(--lightText);
+}
+
+.custom-tooltip p {
+    font-size: 7px;
+    color: var(--darkText);
+    
+}
