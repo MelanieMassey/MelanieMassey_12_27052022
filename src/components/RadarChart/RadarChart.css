@@ -1,0 +1,5 @@
+.activityType {
+    grid-area: repartition;
+    border-radius: 5px;
+    background-color: var(--darkBackground);
+}

@@ -17,8 +17,8 @@ import Keydata from './components/Keydata/Keydata';
 import DailyActivityChart from './components/BarChart/BarChart';
 import AverageSessionsChart from './components/LineChart/LineChart';
 import ActivityTypeChart from './components/RadarChart/RadarChart';
-//import ScoreChart from './components/RadialChart/RadialChart';
-import ScoreChart from './components/PieChart/PieChart';
+import ScoreChart from './components/RadialChart/RadialChart';
+//import ScoreChart from './components/PieChart/PieChart';
 
 // utilisation des données  
 // import * as Mock from '../src/data/data.js'

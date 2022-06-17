@@ -46,7 +46,7 @@ function AverageSessionsChart(data) {
     // }
 
     /* TENTATIVE PERSONNALISATION ABSCISSES #2 */
-    const daysArray={
+    const days={
         1:'L',
         2:'M',
         3:'M',
@@ -55,7 +55,7 @@ function AverageSessionsChart(data) {
         6:'S',
         7:'D',
     }
-    const formattedDays=(item)=>daysArray[item]
+    const formattedDays=(item)=>days[item]
 
     return (
         <div className='averageSessions'>

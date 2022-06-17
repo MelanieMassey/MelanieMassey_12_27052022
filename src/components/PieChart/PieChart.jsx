@@ -14,7 +14,7 @@ function ScoreChart(data) {
     return(
         <div className='todayScore'>
             <ResponsiveContainer width="100%" height="100%">
-                <PieChart width={350} height={350}>
+                <PieChart width="100%" height="100%">
                     <Pie
                         data={dataFormatted}
                         cx={120}

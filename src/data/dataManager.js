@@ -4,7 +4,14 @@ import axios from "axios";
 const mocked = true; // window.location.search === "?mocked";
 const userId = 12; //plus tard de la barre d'adresse
 
-
+const translation = {
+    "energy" : "énergie",
+    "strength" : "force",
+    'cardio' : "cardio",
+    'endurance' : "endurance",
+    'speed' : "vitesse",
+    'intensity' : "intensité"
+}
 
 // if (!mocked){
 //     axios.defaults.baseURL = 'http://localhost:3000/api/';
@@ -56,15 +63,20 @@ async function getAverageSessions() {
 
 async function getPerformance(){
     try{
-        if (mocked) {
-            return extractFromMockedData(USER_PERFORMANCE);
-        }
-        return await axios.get("user/"+userId);
+        const data = mocked? extractFromMockedData(USER_PERFORMANCE) : await axios.get("user/"+userId);
+        const newData = data.data.map(elm=>{
+            return {
+                ...elm,
+                kind : translation[data.kind[elm.kind]]
+            }
+        });
+        return newData;
     }
     catch(error) {
         alert(error)
     }
 }
+
 
 
 // function getMainInformation(data) {

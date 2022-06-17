@@ -2,6 +2,9 @@
     padding-left: 30px;
     padding-top: 20px;
     padding-bottom: 20px;
+    background-color: var(--lightBackground);
+    border-radius: 5px;
+    grid-column:1/4
 }
 
 .dailyActivityChartHeader {

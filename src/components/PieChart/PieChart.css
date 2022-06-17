@@ -1,0 +1,6 @@
+.todayScore {
+    grid-area: score;
+    border-radius: 5px;
+    background-color: var(--lightBackground);
+    padding-top: -200px;
+}
