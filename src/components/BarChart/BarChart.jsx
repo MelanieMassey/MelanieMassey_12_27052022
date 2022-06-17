@@ -3,10 +3,8 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function DailyActivityChart(data) {
-    // console.log(data)
-
-    // FAIRE fonction pour déterminer le min et le max des axes Y
-    
+    console.log(data)
+ 
     return (
     <div className='dailyActivityChart'>
         <div className='dailyActivityChartHeader'>
@@ -29,23 +27,23 @@ function DailyActivityChart(data) {
                 <XAxis dataKey={data.xDataKey} tickLine={false}/>
                 <YAxis 
                     dataKey={data.data1} 
-                    // yAxisId='kilogram' 
+                    yAxisId='kilogram' 
                     orientation='right' 
                     axisLine={false} 
                     tickLine={false} 
-                    // domain={['dataMin-2','dataMax+2']} 
-                    // tickCount={5}
+                    domain={['dataMin-2','dataMax+2']} 
+                    tickCount={5}
                 />
                 <YAxis 
                     dataKey={data.data2}  
-                    // yAxisId="calories"
-                    // domain={['dataMin-100','dataMax+100']}
+                    yAxisId="calories"
+                    domain={['dataMin-50','dataMax+50']}
                     hide={true} 
                 />
                 <Tooltip />
-                <Legend />
-                <Bar dataKey={data.data1} fill="#282D30" barSize={10}  radius={[5,5,0,0]}/>
-                <Bar dataKey={data.data2} fill="#E60000" barSize={10}  radius={[5,5,0,0]}/>
+                {/* <Legend /> */}
+                <Bar dataKey={data.data1} yAxisId='kilogram' fill="#282D30" barSize={10}  radius={[5,5,0,0]}/>
+                <Bar dataKey={data.data2} yAxisId='calories' fill="#E60000" barSize={10}  radius={[5,5,0,0]}/>
             </BarChart>
         </ResponsiveContainer>
     </div>

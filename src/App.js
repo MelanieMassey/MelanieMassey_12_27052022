@@ -27,16 +27,16 @@ function App() {
   
   // Récupération des données USER_MAIN_DATA => Infos personnelles, today score et key data
   const [mainInformation, setMainInfo] = useState(null);
-  console.log(mainInformation) 
+  //console.log(mainInformation) 
 
   const [mainActivity, setMainActivity] = useState(null);
-  console.log(mainActivity)
+  //console.log(mainActivity)
 
   const [averageSessions, setAverageSessions] = useState(null);
-  console.log(averageSessions)
+  //console.log(averageSessions)
 
   const [activityType, setActivityType] = useState(null);
-  console.log(activityType)
+  //console.log(activityType)
 
   //*RECUPERATION DONNEES DEPUIS MOCK*//
   //console.log(Mock)
@@ -61,32 +61,30 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <section>
-        <aside>
-          <div className='activities'>
-            <Activity img={imgMeditation} alt="meditation"/>
-            <Activity img={imgSwimming} alt="swimming"/>
-            <Activity img={imgCycling} alt="cycling"/>
-            <Activity img={imgBodybuilding} alt="bodybuilding"/>
-          </div>
-          <p className='copyrights'>Copyright, SportSee 2020</p>
-        </aside>
-        <div className='dashboardSection'>
-          <header className='dashboardHeader'>
-            <h1>Bonjour <span>{mainInformation.userInfos.firstName}</span></h1>
-            <p>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</p>
-          </header>
-          <div className='dashboardContent'>
-            <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
-            <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
-            <ActivityTypeChart data={activityType} />
-            <ScoreChart data={mainInformation.todayScore} />
-            <div className='keyDataContainer'>
-              <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
-              <Keydata className="proteins" img={proteins} data={mainInformation.keyData.proteinCount} dataType="Protéines"/>
-              <Keydata className="glucides" img={glucides} data={mainInformation.keyData.carbohydrateCount} dataType="Glucides"/>
-              <Keydata className="lipides" img={lipides} data={mainInformation.keyData.lipidCount} dataType="Lipides" />
-            </div>
+      <aside>
+        <div className='activities'>
+          <Activity img={imgMeditation} alt="meditation"/>
+          <Activity img={imgSwimming} alt="swimming"/>
+          <Activity img={imgCycling} alt="cycling"/>
+          <Activity img={imgBodybuilding} alt="bodybuilding"/>
+        </div>
+        <p className='copyrights'>Copyright, SportSee 2020</p>
+      </aside>
+      <section className='dashboardSection'>
+        <header className='dashboardHeader'>
+          <h1>Bonjour <span>{mainInformation.userInfos.firstName}</span></h1>
+          <p>Félicitation ! Vous avez explosé vos objectifs hier &#128079;</p>
+        </header>
+        <div className='dashboardContent'>
+          <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
+          <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
+          <ActivityTypeChart data={activityType} />
+          <ScoreChart data={mainInformation.todayScore} />
+          <div className='keyDataContainer'>
+            <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
+            <Keydata className="proteins" img={proteins} data={mainInformation.keyData.proteinCount} dataType="Protéines"/>
+            <Keydata className="glucides" img={glucides} data={mainInformation.keyData.carbohydrateCount} dataType="Glucides"/>
+            <Keydata className="lipides" img={lipides} data={mainInformation.keyData.lipidCount} dataType="Lipides" />
           </div>
         </div>
       </section>

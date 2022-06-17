@@ -25,3 +25,7 @@ h2 {
 .redDot::marker {
     color: var(--main);
 }
+
+.recharts-default-tooltip {
+    background-color: var(--main);
+}
