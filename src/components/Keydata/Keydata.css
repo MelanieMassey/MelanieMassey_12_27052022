@@ -51,6 +51,7 @@
 
 .dataText p {
     margin: 0;
+    
 }
 
 .dataText p:nth-child(0n+1) {
@@ -61,4 +62,6 @@
 
 .dataText p:nth-child(0n+2) {
     font-size: 14px;
+    font-weight: 500;
+    color: var(--mediumText);
 }
