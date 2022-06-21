@@ -1,12 +1,12 @@
 import './RadialChart.css'
-import { RadialBarChart, RadialBar, Legend, ResponsiveContainer } from 'recharts';
+import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
 function ScoreChart(data) {
-    //console.log(data)
+    console.log(data)
 
     const scoreMax = {
         score:100,
-        fill : "#FFF"
+        fill : "#FBFBFB"
     }
 
     const formattedData = {
@@ -15,36 +15,34 @@ function ScoreChart(data) {
             fill: '#FF0000',
         }
 
-    const style = {
-        top: '50%',
-        right: 0,
-        transform: 'translate(0, -50%)',
-        lineHeight: '24px',
-      };
-    
     return (
         <div className='todayScore'>
+            <h2>{data.title}</h2>
             <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart 
                     cx="50%"
                     cy="50%"
-                    innerRadius="10%"
+                    innerRadius="80%"
                     outerRadius="80%"
                     barSize={10}
                     data={[scoreMax,formattedData]}
                     startAngle={90}
                     endAngle={449}
+                    
                 >
                 <RadialBar
-                    // minAngle={15}
-                    label={{ position: 'insideStart', fill: '#fff' }}
-                    background
-                    // clockWise
                     dataKey="score"
+                    cornerRadius={10}
+                    
                 />
-                <Legend iconSize={10} layout="vertical" verticalAlign="middle" wrapperStyle={style} />
+                <circle cx="50%" cy="50%" fill="white" r="80"></circle>
                 </RadialBarChart>
             </ResponsiveContainer>
+            <p>
+                <span className='scorePourcentage'>{formattedData.score}%</span><br/>
+                de votre<br/>
+                objectif
+            </p>
         </div>
     )
 }

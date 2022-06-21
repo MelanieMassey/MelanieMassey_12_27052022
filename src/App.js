@@ -79,7 +79,7 @@ function App() {
           <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
           <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
           <ActivityTypeChart data={activityType} />
-          <ScoreChart data={mainInformation.todayScore} />
+          <ScoreChart data={mainInformation.todayScore} title="Score"/>
           <div className='keyDataContainer'>
             <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>
             <Keydata className="proteins" img={proteins} data={mainInformation.keyData.proteinCount} dataType="Protéines"/>

@@ -1,0 +1,34 @@
+.todayScore {
+    grid-area: score;
+    border-radius: 5px;
+    background-color: var(--lightBackground);
+    padding-top: -200px;
+    position: relative;
+    display: flex;
+}
+
+.todayScore h2 {
+    position: absolute;
+    top: 8%;
+    left: 8%;
+}
+
+.todayScore p {
+    font-size: 16px;
+    color: var(--mediumText);
+    font-weight: 500;
+    height: 70px;
+    left: 50%;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 95px;
+    margin: 0;
+}
+
+.scorePourcentage {
+    font-size: 26px;
+    color: var(--darkText);
+    font-weight: 700;
+}
