@@ -13,6 +13,16 @@ const translation = {
     'intensity' : "Intensité"
 }
 
+const days = {
+    1:'L',
+    2:'M',
+    3:'M',
+    4:'J',
+    5:'V',
+    6:'S',
+    7:'D',
+}
+
 // if (!mocked){
 //     axios.defaults.baseURL = 'http://localhost:3000/api/';
 // }
@@ -51,10 +61,15 @@ async function getMainActivity(){
 
 async function getAverageSessions() {
     try{
-        if (mocked) {
-            return extractFromMockedData(USER_AVERAGE_SESSIONS);
-        }
-        return await axios.get("user/"+userId);
+        const data = mocked? extractFromMockedData(USER_AVERAGE_SESSIONS) : await axios.get("user/"+userId);
+        console.log(data)
+        const newData = data.sessions.map(elm=> {
+            return {
+                ...elm,
+                day : days[elm.day]
+            }
+        })
+        return newData;
     }
     catch(error) {
         alert(error)

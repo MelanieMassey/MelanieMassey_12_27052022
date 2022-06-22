@@ -2,7 +2,7 @@ import './RadialChart.css'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 
 function ScoreChart(data) {
-    console.log(data)
+    //console.log(data)
 
     const scoreMax = {
         score:100,

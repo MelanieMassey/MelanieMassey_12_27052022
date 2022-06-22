@@ -2,7 +2,7 @@ import './RadarChart.css';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 
 function ActivityTypeChart(data) {
-    console.log(data)
+    //console.log(data)
     // const formattedKinds=(item)=>kinds[item]
 
     return (

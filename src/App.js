@@ -33,7 +33,7 @@ function App() {
   //console.log(mainActivity)
 
   const [averageSessions, setAverageSessions] = useState(null);
-  //console.log(averageSessions)
+  console.log(averageSessions)
 
   const [activityType, setActivityType] = useState(null);
   //console.log(activityType)
@@ -77,7 +77,7 @@ function App() {
         </header>
         <div className='dashboardContent'>
           <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
-          <AverageSessionsChart data={averageSessions.sessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
+          <AverageSessionsChart data={averageSessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
           <ActivityTypeChart data={activityType} />
           <ScoreChart data={mainInformation.todayScore} title="Score"/>
           <div className='keyDataContainer'>
