@@ -1,5 +1,5 @@
 import './LineChart.css'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 function AverageSessionsChart(data) {
     //console.log(data.data)
@@ -60,7 +60,11 @@ function AverageSessionsChart(data) {
     return (
         <div className='averageSessions'>
             <h2>{data.title}</h2>
-            <ResponsiveContainer width="100%" height="50%">
+            <ResponsiveContainer 
+                width="100%" 
+                height="100%"
+                className="averageResponsive"
+            >
                 <LineChart
                     data={data.data}
                     margin={{
@@ -69,20 +73,37 @@ function AverageSessionsChart(data) {
                     left: 20,
                     bottom: 5,
                     }}
+                    onMouseMove={(e) => {
+                        if (e.isTooltipActive === true) {
+                          let div = document.querySelector('.averageResponsive');
+                          let windowWidth = div.clientWidth;
+                          let mouseXpercentage = Math.round(
+                            (e.activeCoordinate.x / windowWidth) * 100
+                          );
+                          
+                          div.style.background = `linear-gradient(90deg, rgba(255,0,0,1) ${mouseXpercentage}%, rgba(175,0,0,1.5) ${mouseXpercentage}%, rgba(175,0,0,1.5) 100%)`;
+                        }
+                    }}
                 >
+                    
                     <CartesianGrid vertical={false} horizontal={false}/>
                     <XAxis dataKey={data.xDataKey} 
-                        tick={{ fill: '#ffffff' }} 
+                        tick={{ fill: '#ffffff', opacity: 0.5 }} 
                         tickLine={{ stroke: '' }}
                         axisLine={{ stroke: "" }}
                         tickFormatter={formattedDays}
                         
                     />
-                    <YAxis hide={true}
+                    <YAxis 
+                        hide={true}
+                        domain={['dataMin -15', 'dataMax + 45']}
                     />
-                    <Tooltip content={<CustomTooltip/>}/>
+                    <Tooltip 
+                        content={<CustomTooltip/>}
+                        cursor={{stroke:'none'}}
+                    />
                     {/* <Legend /> */}
-                    <Line type="monotone" dataKey={data.data1} stroke="#ffffff" dot={false}/>
+                    <Line type="natural" dataKey={data.data1} stroke="#ffffff" dot={false}/>
                 </LineChart>
             </ResponsiveContainer>
         </div>

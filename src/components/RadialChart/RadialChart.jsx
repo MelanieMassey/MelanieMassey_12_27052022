@@ -35,7 +35,7 @@ function ScoreChart(data) {
                     cornerRadius={10}
                     
                 />
-                <circle cx="50%" cy="50%" fill="white" r="80"></circle>
+                <circle cx="50%" cy="50%" fill="white" r="65"></circle>
                 </RadialBarChart>
             </ResponsiveContainer>
             <p>

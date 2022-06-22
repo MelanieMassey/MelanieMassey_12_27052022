@@ -5,12 +5,12 @@ const mocked = true; // window.location.search === "?mocked";
 const userId = 12; //plus tard de la barre d'adresse
 
 const translation = {
-    "energy" : "énergie",
-    "strength" : "force",
-    'cardio' : "cardio",
-    'endurance' : "endurance",
-    'speed' : "vitesse",
-    'intensity' : "intensité"
+    "energy" : "Energie",
+    "strength" : "Force",
+    'cardio' : "Cardio",
+    'endurance' : "Endurance",
+    'speed' : "Vitesse",
+    'intensity' : "Intensité"
 }
 
 // if (!mocked){
