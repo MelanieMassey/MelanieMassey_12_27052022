@@ -8,3 +8,10 @@
     justify-content: center;
     margin: 20px 0;
 }
+
+@media screen and (max-width:1200px) {
+    .activityBox {
+        width: 55px;
+        height: 55px;
+    }
+  }

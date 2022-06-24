@@ -20,31 +20,20 @@ import ActivityTypeChart from './components/RadarChart/RadarChart';
 import ScoreChart from './components/RadialChart/RadialChart';
 //import ScoreChart from './components/PieChart/PieChart';
 
-// utilisation des données  
-// import * as Mock from '../src/data/data.js'
+
 
 function App() {
-  
-  // Récupération des données USER_MAIN_DATA => Infos personnelles, today score et key data
+
   const [mainInformation, setMainInfo] = useState(null);
-  //console.log(mainInformation) 
+  // console.log(mainInformation) 
 
   const [mainActivity, setMainActivity] = useState(null);
-  //console.log(mainActivity)
+  // console.log(mainActivity)
 
   const [averageSessions, setAverageSessions] = useState(null);
-  console.log(averageSessions)
+  // console.log(averageSessions)
 
   const [activityType, setActivityType] = useState(null);
-  //console.log(activityType)
-
-  //*RECUPERATION DONNEES DEPUIS MOCK*//
-  //console.log(Mock)
-  // const mainActivity = getMainActivity(Mock)
-  // console.log(mainActivity.sessions)
-  //const averageSessions = getAverageSessions(Mock)
-  // console.log(averageSessions)
-  // const activityType = getPerformance(Mock)
   // console.log(activityType)
 
   useEffect(()=>{
@@ -77,8 +66,8 @@ function App() {
         </header>
         <div className='dashboardContent'>
           <DailyActivityChart data={mainActivity.sessions} title="Activité quotidienne" xDataKey="day" data1="kilogram" legendData1="Poids (kg)" data2="calories" legendData2="Calories brûlées (kCal)"/>
-          <AverageSessionsChart data={averageSessions} title="Durée moyenne des sessions" xDataKey="day" data1="sessionLength"/>
-          <ActivityTypeChart data={activityType} />
+          <AverageSessionsChart data={averageSessions} title="Durée moyenne des sessions" xDataKey="day" lineData="sessionLength"/>
+          <ActivityTypeChart data={activityType} angleDataKey="kind" chartDataKey="value"/>
           <ScoreChart data={mainInformation.todayScore} title="Score"/>
           <div className='keyDataContainer'>
             <Keydata className="energy" img={energy} data={mainInformation.keyData.calorieCount} dataType="Calories"/>

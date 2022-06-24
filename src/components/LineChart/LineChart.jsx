@@ -1,8 +1,19 @@
 import './LineChart.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import propTypes from 'prop-types';
 
-function AverageSessionsChart(data) {
-    console.log(data)
+/**
+ * @param {object} props Necessary data to use the component
+ * @prop {Object} props.data Average sessions data used for the Line Chart
+ * @prop {string} props.lineData Name of the data used for the Line
+ * 
+ * 
+ * @prop {string} props.title Title of the chart
+ * @prop {string} props.xDataKey Name of the data used for X axis
+ * @returns React Line chart component using Recharts
+ */
+function AverageSessionsChart(props) {
+    //console.log(props)
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -18,14 +29,14 @@ function AverageSessionsChart(data) {
 
     return (
         <div className='averageSessions'>
-            <h2>{data.title}</h2>
+            <h2>{props.title}</h2>
             <ResponsiveContainer 
                 width="100%" 
                 height="100%"
                 className="averageResponsive"
             >
                 <LineChart
-                    data={data.data}
+                    data={props.data}
                     margin={{
                     top: 5,
                     right: 30,
@@ -46,7 +57,7 @@ function AverageSessionsChart(data) {
                 >
                     
                     <CartesianGrid vertical={false} horizontal={false}/>
-                    <XAxis dataKey={data.xDataKey} 
+                    <XAxis dataKey={props.xDataKey} 
                         tick={{ fill: '#ffffff', opacity: 0.5 }} 
                         tickLine={{ stroke: '' }}
                         axisLine={{ stroke: "" }}
@@ -62,7 +73,7 @@ function AverageSessionsChart(data) {
                         cursor={{stroke:'none'}}
                     />
                     {/* <Legend /> */}
-                    <Line type="natural" dataKey={data.data1} stroke="#ffffff" dot={false}/>
+                    <Line type="natural" dataKey={props.lineData} stroke="#ffffff" dot={false}/>
                 </LineChart>
             </ResponsiveContainer>
         </div>
@@ -110,6 +121,14 @@ function AverageSessionsChart(data) {
     // const formattedDays=(item)=>days[item]
 
     // FINAL => Personnalisation des abscisses gérées dans mon DataManager
+}
+
+AverageSessionsChart.propTypes = {
+  data: propTypes.array,
+  lineData: propTypes.string,
+  title: propTypes.string,
+  xDataKey: propTypes.string,
+
 }
 
 export default AverageSessionsChart;

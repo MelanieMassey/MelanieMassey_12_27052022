@@ -2,10 +2,6 @@
 import './Header.css'
 import logo from '../../assets/logo.png'
 
-/**
- * @param
- * @returns {Element}
- */
 function Header() {
     return(
         <header className='mainHeader'>

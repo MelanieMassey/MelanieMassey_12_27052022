@@ -4,6 +4,11 @@ import axios from "axios";
 const mocked = true; // window.location.search === "?mocked";
 const userId = 12; //plus tard de la barre d'adresse
 
+/**
+ * Reformatting the Performance Data => Translation management from ENG to FR 
+ *
+ * @var {Object}
+ */
 const translation = {
     "energy" : "Energie",
     "strength" : "Force",
@@ -13,6 +18,11 @@ const translation = {
     'intensity' : "Intensité"
 }
 
+/**
+ * Reformatting the average sessions data => Days instead of numbers
+ *
+ * @var {[type]}
+ */
 const days = {
     1:'L',
     2:'M',
@@ -27,14 +37,28 @@ const days = {
 //     axios.defaults.baseURL = 'http://localhost:3000/api/';
 // }
 
+/**
+ * Get user data from Mocked Data
+ *
+ * @param   {Object}  data  Array of data from all users
+ *
+ * @return  {Object}        User data
+ */
 function extractFromMockedData(data){
+    // console.log(data)
     for (const key in data){
         //console.log(data[key].userId, userId, data[key].userId === userId)
         if (data[key].userId === userId ) return data[key];
     }
+    console.log(data)
     // throw new Error("l'id n'existe pas");
 }
 
+/**
+ * Get main information data: user infos, key data & today score
+ *
+ * @return  {Promise}  User main information
+ */
 async function getMainInformation(){
     try{
         if (mocked) {
@@ -47,6 +71,10 @@ async function getMainInformation(){
     }
 }
 
+/**Get main activity data: sessions data
+ *
+ * @return  {Promise}  User main activity data
+ */
 async function getMainActivity(){
     try{
         if (mocked) {
@@ -59,10 +87,15 @@ async function getMainActivity(){
     }
 }
 
+/**
+ * Get average sessions data: session length per day
+ *
+ * @return  {Promise}  User average sessions data
+ */
 async function getAverageSessions() {
     try{
         const data = mocked? extractFromMockedData(USER_AVERAGE_SESSIONS) : await axios.get("user/"+userId);
-        console.log(data)
+        //console.log(data)
         const newData = data.sessions.map(elm=> {
             return {
                 ...elm,
@@ -76,6 +109,11 @@ async function getAverageSessions() {
     }
 }
 
+/**
+ * Get performance data: Cardio, energy, endurance, speed, intensity
+ *
+ * @return  {Promise}  User performance data
+ */
 async function getPerformance(){
     try{
         const data = mocked? extractFromMockedData(USER_PERFORMANCE) : await axios.get("user/"+userId);
@@ -93,22 +131,6 @@ async function getPerformance(){
 }
 
 
-
-// function getMainInformation(data) {
-//     return data.USER_MAIN_DATA[0];
-// }
-
-// function getMainActivity(data) {
-//     return data.USER_ACTIVITY[0];
-// }
-
-// function getAverageSessions(data) {
-//     return data.USER_AVERAGE_SESSIONS[0]
-// }
-
-// function getPerformance(data) {
-//     return data.USER_PERFORMANCE[0]
-// }
 
 export{
     getMainInformation,

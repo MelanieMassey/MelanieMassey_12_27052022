@@ -1,9 +1,23 @@
 import './BarChart.css';
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import propTypes from 'prop-types';
 
-function DailyActivityChart(data) {
-    //console.log(data)
+/**
+ * Creates a bar chart
+ * @param {object} props Necessary data to use the component
+ * @prop {Object} data Daily activity data used for the bar chart
+ * @prop {String} data1 Data used for black bars
+ * @prop {String} data2 Data used for main colored bars
+ * @prop {String} legendData1 Legend of Data1
+ * @prop {String} legendData2 Legend of Data2
+ * @prop {String} title Title of the chart
+ * @prop {String} xDataKey Name of the data used for X axis
+ * @returns React bar chart component using Recharts
+ */
+function DailyActivityChart(props) {
+    // console.log(props)
+    
 
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
@@ -23,15 +37,15 @@ function DailyActivityChart(data) {
     return (
     <div className='dailyActivityChart'>
         <div className='dailyActivityChartHeader'>
-            <h2>{data.title}</h2>
+            <h2>{props.title}</h2>
             <ul>
-                <li className='blackDot'>{data.legendData1}</li>
-                <li className='redDot'>{data.legendData2}</li>
+                <li className='blackDot'>{props.legendData1}</li>
+                <li className='redDot'>{props.legendData2}</li>
             </ul>
         </div>
         <ResponsiveContainer width="100%" height="100%">
             <BarChart
-            data={data.data}
+            data={props.data}
             margin={{
                 top: 20,
                 left:5
@@ -40,12 +54,12 @@ function DailyActivityChart(data) {
                 
                 <CartesianGrid vertical={false} />
                 <XAxis 
-                    dataKey={data.xDataKey} 
+                    dataKey={props.xDataKey} 
                     tickLine={false}
                     tickFormatter={formattedDate}
                 />
                 <YAxis 
-                    dataKey={data.data1} 
+                    dataKey={props.data1} 
                     yAxisId='kilogram' 
                     orientation='right' 
                     axisLine={false} 
@@ -54,19 +68,30 @@ function DailyActivityChart(data) {
                     tickCount={5}
                 />
                 <YAxis 
-                    dataKey={data.data2}  
+                    dataKey={props.data2}  
                     yAxisId="calories"
                     domain={['dataMin-50','dataMax+50']}
                     hide={true} 
                 />
                 <Tooltip content={<CustomTooltip/>}/>
                 {/* <Legend /> */}
-                <Bar dataKey={data.data1} yAxisId='kilogram' fill="#282D30" barSize={10}  radius={[5,5,0,0]}/>
-                <Bar dataKey={data.data2} yAxisId='calories' fill="#E60000" barSize={10}  radius={[5,5,0,0]}/>
+                <Bar dataKey={props.data1} yAxisId='kilogram' fill="#282D30" barSize={10}  radius={[5,5,0,0]}/>
+                <Bar dataKey={props.data2} yAxisId='calories' fill="#E60000" barSize={10}  radius={[5,5,0,0]}/>
             </BarChart>
         </ResponsiveContainer>
     </div>
     );
+
   }
+
+DailyActivityChart.propTypes = {
+    data: propTypes.array,
+    data1: propTypes.string,
+    data2: propTypes.string,
+    legendData1: propTypes.string,
+    legendData2: propTypes.string,
+    title: propTypes.string,
+    xDataKey: propTypes.string,
+}
 
 export default DailyActivityChart;
