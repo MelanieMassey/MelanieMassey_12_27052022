@@ -5,9 +5,9 @@ import propTypes from 'prop-types';
 /**
  * 
  * @param {Object} props Necessary data to use the component
- * @prop {Object} data Data used to build the chart
- * @prop {String} angleDataKey Data used for the PolarAngleAxis
- * @prop {String} chartDataKey Data used for the RadarChart
+ * @param {Object} props.data Data used to build the chart
+ * @param {String} props.angleDataKey Data used for the PolarAngleAxis
+ * @param {String} props.chartDataKey Data used for the RadarChart
  * @returns React radar chart component using Recharts
  */
 function ActivityTypeChart(props) {

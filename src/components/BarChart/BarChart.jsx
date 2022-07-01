@@ -6,13 +6,13 @@ import propTypes from 'prop-types';
 /**
  * Creates a bar chart
  * @param {object} props Necessary data to use the component
- * @prop {Object} data Daily activity data used for the bar chart
- * @prop {String} data1 Data used for black bars
- * @prop {String} data2 Data used for main colored bars
- * @prop {String} legendData1 Legend of Data1
- * @prop {String} legendData2 Legend of Data2
- * @prop {String} title Title of the chart
- * @prop {String} xDataKey Name of the data used for X axis
+ * @param {Object} props.data Daily activity data used for the bar chart
+ * @param {String} props.data1 Data used for black bars
+ * @param {String} props.data2 Data used for main colored bars
+ * @param {String} props.legendData1 Legend of Data1
+ * @param {String} props.legendData2 Legend of Data2
+ * @param {String} props.title Title of the chart
+ * @param {String} props.xDataKey Name of the data used for X axis
  * @returns React bar chart component using Recharts
  */
 function DailyActivityChart(props) {

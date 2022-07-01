@@ -1,0 +1,72 @@
+.loader{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    opacity: 1;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: loader--disappear 1s both ease 3.5s;
+}
+
+.loader--firstdot {
+    position: relative;
+}
+
+.dot{
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    background: var(--main);
+}
+
+.dot--1{
+    position: absolute;
+    left: 0px;
+    animation: dot--appear 1.5s both ease-in-out 2;
+}
+.dot--2{
+    animation: dot--translate 1.5s both ease-in-out 2;
+}
+.dot--3{
+    animation: dot--translate 1.5s both ease-in-out 2;
+}
+.dot--4{
+    animation: dot--disappear 1.5s both ease-in-out 2;
+}
+
+@keyframes dot--appear{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes dot--disappear{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(0);
+    }
+}
+@keyframes dot--translate{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(45px);
+    }
+}
+@keyframes loader--disappear{
+    100%{
+        opacity: 0;
+        z-index: -999;
+    }
+}

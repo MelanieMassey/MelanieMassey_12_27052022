@@ -4,10 +4,10 @@ import propTypes from 'prop-types';
 
 /**
  * Component that will show key data
- * @prop {string} className To set classNames of some elements
- * @prop {string} img Image src
- * @prop {number} data 
- * @prop {string} dataType Type of the data (carbohydrate, proteins, calories, lipids)
+ * @param {string} className To set classNames of some elements
+ * @param {string} img Image src
+ * @param {number} data 
+ * @param {string} dataType Type of the data (carbohydrate, proteins, calories, lipids)
  * @returns React Component Keydata
  */
 function Keydata({className, img, data, dataType}) {

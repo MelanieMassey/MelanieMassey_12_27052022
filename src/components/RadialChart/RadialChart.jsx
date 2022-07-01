@@ -5,12 +5,12 @@ import propTypes from 'prop-types';
 /**
  * Creates a Radial Chart
  * @param {Object} props Data used to build the component
- * @prop {Number} data Data used for the chart
- * @prop {String} title Title of the chart
+ * @param {Number} props.data Data used for the chart
+ * @param {String} props.title Title of the chart
  * @returns React radial chart component using Recharts
  */
 function ScoreChart(props) {
-    console.log(props)
+    // console.log(props)
 
     const scoreMax = {
         score:100,

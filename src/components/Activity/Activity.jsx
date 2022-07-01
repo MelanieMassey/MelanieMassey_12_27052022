@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 
 /**
  * Creates activity element of the vertical navigation bar
- * @prop {String} img Image path
- * @prop {String} alt Image description
+ * @param {String} img Image path
+ * @param {String} alt Image description
  * @returns Activity component
  */
 function Activity({img, alt}) {
