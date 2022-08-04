@@ -9,7 +9,7 @@ import propTypes from 'prop-types';
  * @param {String} props.title Title of the chart
  * @returns React radial chart component using Recharts
  */
-function ScoreChart(props) {
+function CreateRadialChart(props) {
     // console.log(props)
 
     const scoreMax = {
@@ -18,10 +18,10 @@ function ScoreChart(props) {
     }
 
     const formattedData = {
-            name: 'data1',
-            score: props.data*100,
-            fill: '#FF0000',
-        }
+        name: 'data1',
+        score: props.data*100,
+        fill: '#FF0000',
+    }
 
     return (
         <div className='todayScore'>
@@ -36,12 +36,10 @@ function ScoreChart(props) {
                     data={[scoreMax,formattedData]}
                     startAngle={90}
                     endAngle={449}
-                    
                 >
                 <RadialBar
                     dataKey="score"
                     cornerRadius={10}
-                    
                 />
                 <circle cx="50%" cy="50%" fill="white" r="65"></circle>
                 </RadialBarChart>
@@ -55,9 +53,9 @@ function ScoreChart(props) {
     )
 }
 
-ScoreChart.propTypes = {
+CreateRadialChart.propTypes = {
     data: propTypes.number,
     title: propTypes.string,
 }
 
-export default ScoreChart;
+export default CreateRadialChart;

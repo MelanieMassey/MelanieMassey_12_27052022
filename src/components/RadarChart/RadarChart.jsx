@@ -10,7 +10,7 @@ import propTypes from 'prop-types';
  * @param {String} props.chartDataKey Data used for the RadarChart
  * @returns React radar chart component using Recharts
  */
-function ActivityTypeChart(props) {
+function CreateRadarChart(props) {
     // console.log(props)
     // const formattedKinds=(item)=>kinds[item]
 
@@ -25,18 +25,22 @@ function ActivityTypeChart(props) {
                         tick={{ fill: '#ffffff' }}
                     />
                     <PolarRadiusAxis tickCount={6} tick={false} axisLine={false} />
-                    <Radar name="ActivityType" dataKey={props.chartDataKey} stroke="" fill="#FF0101" fillOpacity={0.7} />
+                    <Radar 
+                        name="ActivityType" 
+                        dataKey={props.chartDataKey} 
+                        stroke="" 
+                        fill="#FF0101" 
+                        fillOpacity={0.7} />
                 </RadarChart>
             </ResponsiveContainer>
         </div>
-        
       );
 }
 
-ActivityTypeChart.propTypes = {
+CreateRadarChart.propTypes = {
     data: propTypes.array,
     angleDataKey: propTypes.string,
     chartDataKey: propTypes.string,
 }
 
-export default ActivityTypeChart;
+export default CreateRadarChart;

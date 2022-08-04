@@ -15,7 +15,7 @@ import propTypes from 'prop-types';
  * @param {String} props.xDataKey Name of the data used for X axis
  * @returns React bar chart component using Recharts
  */
-function DailyActivityChart(props) {
+function CreateBarChart(props) {
     // console.log(props)
     
 
@@ -84,7 +84,7 @@ function DailyActivityChart(props) {
 
   }
 
-DailyActivityChart.propTypes = {
+CreateBarChart.propTypes = {
     data: propTypes.array,
     data1: propTypes.string,
     data2: propTypes.string,
@@ -94,4 +94,4 @@ DailyActivityChart.propTypes = {
     xDataKey: propTypes.string,
 }
 
-export default DailyActivityChart;
+export default CreateBarChart;

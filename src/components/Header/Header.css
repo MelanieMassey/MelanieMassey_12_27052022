@@ -26,6 +26,7 @@ a {
 @media screen and (max-width:1200px) {
     .mainHeader {
         height: 65px;
+        padding: 0 50px 0 15px;
     }
     .logo {
         margin-top: 5px;

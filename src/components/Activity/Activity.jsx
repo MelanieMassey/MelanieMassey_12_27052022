@@ -1,5 +1,6 @@
 import './Activity.css';
 import propTypes from 'prop-types';
+import React from 'react';
 
 /**
  * Creates activity element of the vertical navigation bar

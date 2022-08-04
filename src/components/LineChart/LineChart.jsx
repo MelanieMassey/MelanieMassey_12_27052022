@@ -10,9 +10,8 @@ import propTypes from 'prop-types';
  * @param {string} props.xDataKey Name of the data used for X axis
  * @returns React Line chart component using Recharts
  */
-function AverageSessionsChart(props) {
+function CreateLineChart(props) {
     //console.log(props)
-
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
           return (
@@ -21,7 +20,6 @@ function AverageSessionsChart(props) {
             </div>
           );
         }
-      
         return null;
     };
 
@@ -121,7 +119,7 @@ function AverageSessionsChart(props) {
     // FINAL => Personnalisation des abscisses gérées dans mon DataManager
 }
 
-AverageSessionsChart.propTypes = {
+CreateLineChart.propTypes = {
   data: propTypes.array,
   lineData: propTypes.string,
   title: propTypes.string,
@@ -129,4 +127,4 @@ AverageSessionsChart.propTypes = {
 
 }
 
-export default AverageSessionsChart;
+export default CreateLineChart;
