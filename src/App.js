@@ -1,3 +1,4 @@
+// @ts-nocheck
 import './style/App.css';
 import {getAllData2} from './data/dataManager';
 import React, { useEffect, useState } from 'react';
@@ -29,6 +30,7 @@ function App() {
   // console.log(userId)
 
   const [pageState, setPageState] = useState({userInfos: {}, sessionsActivity: [], sessionsAverage: [], performance: [], todayScore: 0, keyData: {}});
+  const [loading, setLoading] = useState(false);
 
   useEffect(()=>{
     if (userId === undefined) return;
@@ -37,6 +39,7 @@ function App() {
         const newPageData = await getAllData2(userId);
         // console.log(newPageData)
         setPageState(newPageData);
+        setLoading(true);
       }
       catch(error){
         console.error(error)
@@ -65,6 +68,8 @@ function App() {
     
     <div className="App">
       <Header/>
+      {loading && 
+      <div>
       <aside>
         <div className='activities'>
           <Activity img={imgMeditation} alt="meditation"/>
@@ -85,13 +90,15 @@ function App() {
           <CreateRadarChart data={pageState.performance} angleDataKey="kind" chartDataKey="value"/>
           <CreateRadialChart data={pageState.todayScore} title="Score"/>
           <div className='keyDataContainer'>
-            <Keydata className="energy" img={energy} data={pageState.keyData.calorieCount} dataType="Calories"/>
-            <Keydata className="proteins" img={proteins} data={pageState.keyData.proteinCount} dataType="Protéines"/>
+            <Keydata className="energy" img={energy} data={pageState.keyData.calorieCount} dataType="Calories" key="energy"/>
+            <Keydata className="proteins" img={proteins} data={pageState.keyData.proteinCount} dataType="Protéines" key="proteins"/>
             <Keydata className="glucides" img={glucides} data={pageState.keyData.carbohydrateCount} dataType="Glucides"/>
             <Keydata className="lipides" img={lipides} data={pageState.keyData.lipidCount} dataType="Lipides" />
           </div>
         </div>
       </section>
+      </div>
+      }
     </div>
   );
 }
