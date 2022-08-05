@@ -6,35 +6,6 @@ const mocked = false; // window.location.search === "?mocked"
 
 let store = {};
 
-/**
- * Reformatting the Performance Data => Translation management from ENG to FR 
- *
- * @var {Object}
- */
-const translation = {
-    "energy" : "Energie",
-    "strength" : "Force",
-    'cardio' : "Cardio",
-    'endurance' : "Endurance",
-    'speed' : "Vitesse",
-    'intensity' : "Intensité"
-}
-
-/**
- * Reformatting the average sessions data => Days instead of numbers
- *
- * @var {[type]}
- */
-const days = {
-    1:'L',
-    2:'M',
-    3:'M',
-    4:'J',
-    5:'V',
-    6:'S',
-    7:'D',
-}
-
 if (!mocked){
     axios.defaults.baseURL = 'https://calm-gorge-80201.herokuapp.com/';
 }
@@ -58,6 +29,8 @@ function extractFromMockedData(data){
 
 /**
  * Get main information data: user infos, key data & today score
+ * 
+ * @param {Number} userId User id number
  *
  * @return  {Promise}  User main information
  */
@@ -76,6 +49,8 @@ async function getMainInformation(userId){
 }
 
 /**Get main activity data: sessions data
+ * 
+ * @param {Number} userId User id number
  *
  * @return  {Promise}  User main activity data
  */
@@ -94,6 +69,8 @@ async function getMainActivity(userId){
 
 /**
  * Get average sessions data: session length per day
+ *
+ * @param {Number} userId User id number
  *
  * @return  {Promise}  User average sessions data
  */
@@ -116,6 +93,8 @@ async function getAverageSessions(userId) {
 /**
  * Get performance data: Cardio, energy, endurance, speed, intensity
  *
+ * @param {Number} userId User id number
+ *
  * @return  {Promise}  User performance data
  */
 async function getPerformance(userId){
@@ -134,18 +113,25 @@ async function getPerformance(userId){
     }
 }
 
-async function getAllData(id){
-    if (id === undefined ) throw new Error("id indefini");
-    store.userId = parseInt(id);
-    updateData({mainInformation : await getMainInformation(store.userId)});
-    if (!store.mainInformation)throw new Error("id non pris en charge");
-    updateData({mainActivity : await getMainActivity(store.userId)});
-    updateData({averageSessions : await getAverageSessions(store.userId)});
-    updateData({activityType : await getPerformance(store.userId)});
+// async function getAllData(id){
+//     if (id === undefined ) throw new Error("id indefini");
+//     store.userId = parseInt(id);
+//     updateData({mainInformation : await getMainInformation(store.userId)});
+//     if (!store.mainInformation)throw new Error("id non pris en charge");
+//     updateData({mainActivity : await getMainActivity(store.userId)});
+//     updateData({averageSessions : await getAverageSessions(store.userId)});
+//     updateData({activityType : await getPerformance(store.userId)});
 
-    return store;
-}
+//     return store;
+// }
 
+/**
+ * Get and format all necessary data
+ *
+ * @param   {Number}  id  [id description]
+ *
+ * @return  {Promise}  Object with all necessary formatted data
+ */
 async function getAllData2(id){
     if (id === undefined) {
         throw new Error("id indefini");
@@ -154,27 +140,19 @@ async function getAllData2(id){
     user.setUserActivity(await getMainActivity(id));
     user.setUserSessions(await getAverageSessions(id));
     user.setUserPerformance(await getPerformance(id));
+    console.log(user)
     return user;
 }
 
-// function doesIdExist(id){
-//     let idStatus = false
-//     if (USER_MAIN_DATA.filter((user) => user.userId === parseInt(id)).length > 0){
-//         return idStatus = true
+// function updateData(newData){
+//     store = {
+//         ...store,
+//         ...newData
 //     }
-    
-//     console.log(idStatus)
 // }
 
-function updateData(newData){
-    store = {
-        ...store,
-        ...newData
-    }
-}
-
 export{
-    getAllData,
+    // getAllData,
     getAllData2
     // doesIdExist
 }

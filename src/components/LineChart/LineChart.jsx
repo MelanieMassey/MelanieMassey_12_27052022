@@ -1,6 +1,7 @@
 import './LineChart.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import propTypes from 'prop-types';
+import React from 'react';
 
 /**
  * @param {object} props Necessary data to use the component

@@ -18,7 +18,6 @@ import propTypes from 'prop-types';
 function CreateBarChart(props) {
     // console.log(props)
     
-
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
           return (
@@ -28,7 +27,6 @@ function CreateBarChart(props) {
             </div>
           );
         }
-      
         return null;
     };
 
@@ -51,7 +49,6 @@ function CreateBarChart(props) {
                 left:5
             }}
             >
-                
                 <CartesianGrid vertical={false} />
                 <XAxis 
                     dataKey={props.xDataKey} 

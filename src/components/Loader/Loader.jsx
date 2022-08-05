@@ -1,5 +1,10 @@
 import './Loader.css';
+import React from 'react';
 
+/**
+ * 
+ * @returns Loader component waiting for the page to fully load
+ */
 function Loader() {
     return (
         <div className="loader">

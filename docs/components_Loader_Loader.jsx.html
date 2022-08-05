@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/RadialChart/RadialChart.jsx</title>
+    <title>JSDoc: Source: components/Loader/Loader.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/RadialChart/RadialChart.jsx</h1>
+    <h1 class="page-title">Source: components/Loader/Loader.jsx</h1>
 
     
 
@@ -26,68 +26,27 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import './RadialChart.css'
-import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
-import propTypes from 'prop-types';
+            <pre class="prettyprint source linenums"><code>import './Loader.css';
 import React from 'react';
 
 /**
- * Creates a Radial Chart
- * @param {Object} props Data used to build the component
- * @param {Number} props.data Data used for the chart
- * @param {String} props.title Title of the chart
- * @returns React radial chart component using Recharts
+ * 
+ * @returns Loader component waiting for the page to fully load
  */
-function CreateRadialChart(props) {
-    // console.log(props)
-
-    const scoreMax = {
-        score:100,
-        fill : "#FBFBFB"
-    }
-
-    const formattedData = {
-        name: 'data1',
-        score: props.data*100,
-        fill: '#FF0000',
-    }
-
+function Loader() {
     return (
-        &lt;div className='todayScore'>
-            &lt;h2>{props.title}&lt;/h2>
-            &lt;ResponsiveContainer width="100%" height="100%">
-                &lt;RadialBarChart 
-                    cx="50%"
-                    cy="50%"
-                    innerRadius="80%"
-                    outerRadius="80%"
-                    barSize={10}
-                    data={[scoreMax,formattedData]}
-                    startAngle={90}
-                    endAngle={449}
-                >
-                &lt;RadialBar
-                    dataKey="score"
-                    cornerRadius={10}
-                />
-                &lt;circle cx="50%" cy="50%" fill="white" r="65">&lt;/circle>
-                &lt;/RadialBarChart>
-            &lt;/ResponsiveContainer>
-            &lt;p>
-                &lt;span className='scorePourcentage'>{formattedData.score}%&lt;/span>&lt;br/>
-                de votre&lt;br/>
-                objectif
-            &lt;/p>
+        &lt;div className="loader">
+            &lt;div className="loader--firstdot">
+                &lt;div className="dot dot--1">&lt;/div>
+                &lt;div className="dot dot--2">&lt;/div>
+            &lt;/div>
+            &lt;div className="dot dot--3">&lt;/div>
+            &lt;div className="dot dot--4">&lt;/div>
         &lt;/div>
     )
 }
 
-CreateRadialChart.propTypes = {
-    data: propTypes.number,
-    title: propTypes.string,
-}
-
-export default CreateRadialChart;</code></pre>
+export default Loader;</code></pre>
         </article>
     </section>
 

@@ -1,6 +1,7 @@
 import './RadarChart.css';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
 import propTypes from 'prop-types';
+import React from 'react';
 
 /**
  * 

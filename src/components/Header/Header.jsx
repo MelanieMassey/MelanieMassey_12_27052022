@@ -1,7 +1,11 @@
 // import { Link } from "react-router-dom"
 import './Header.css'
 import logo from '../../assets/logo.png'
-
+import React from 'react';
+/**
+ * 
+ * @returns Header component of the web application
+ */
 function Header() {
     return(
         <header className='mainHeader'>

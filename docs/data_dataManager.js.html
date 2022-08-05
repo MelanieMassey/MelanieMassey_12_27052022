@@ -28,40 +28,11 @@
         <article>
             <pre class="prettyprint source linenums"><code>import {USER_ACTIVITY, USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from "./data";
 import axios from "axios";
-import Page404 from '../pages/Page404';
+import User from "./user.js";
 
 const mocked = false; // window.location.search === "?mocked"
 
 let store = {};
-
-/**
- * Reformatting the Performance Data => Translation management from ENG to FR 
- *
- * @var {Object}
- */
-const translation = {
-    "energy" : "Energie",
-    "strength" : "Force",
-    'cardio' : "Cardio",
-    'endurance' : "Endurance",
-    'speed' : "Vitesse",
-    'intensity' : "Intensité"
-}
-
-/**
- * Reformatting the average sessions data => Days instead of numbers
- *
- * @var {[type]}
- */
-const days = {
-    1:'L',
-    2:'M',
-    3:'M',
-    4:'J',
-    5:'V',
-    6:'S',
-    7:'D',
-}
 
 if (!mocked){
     axios.defaults.baseURL = 'https://calm-gorge-80201.herokuapp.com/';
@@ -86,6 +57,8 @@ function extractFromMockedData(data){
 
 /**
  * Get main information data: user infos, key data &amp; today score
+ * 
+ * @param {Number} userId User id number
  *
  * @return  {Promise}  User main information
  */
@@ -104,6 +77,8 @@ async function getMainInformation(userId){
 }
 
 /**Get main activity data: sessions data
+ * 
+ * @param {Number} userId User id number
  *
  * @return  {Promise}  User main activity data
  */
@@ -123,18 +98,20 @@ async function getMainActivity(userId){
 /**
  * Get average sessions data: session length per day
  *
+ * @param {Number} userId User id number
+ *
  * @return  {Promise}  User average sessions data
  */
 async function getAverageSessions(userId) {
     try{
         const data = mocked? extractFromMockedData(USER_AVERAGE_SESSIONS) : (await axios.get("user/"+userId+"/average-sessions")).data.data;
-        const newData = data.sessions.map(elm=> {
-            return {
-                ...elm,
-                day : days[elm.day]
-            }
-        })
-        return newData;
+        // const newData = data.sessions.map(elm=> {
+        //     return {
+        //         ...elm,
+        //         // day : days[elm.day]
+        //     }
+        // })
+        return data;
     }
     catch(error) {
         alert("getAverageSessions : "+error)
@@ -144,54 +121,67 @@ async function getAverageSessions(userId) {
 /**
  * Get performance data: Cardio, energy, endurance, speed, intensity
  *
+ * @param {Number} userId User id number
+ *
  * @return  {Promise}  User performance data
  */
 async function getPerformance(userId){
     try{
         const data = mocked? extractFromMockedData(USER_PERFORMANCE) : (await axios.get("user/"+userId+"/performance")).data.data;
-        const newData = data.data.map(elm=>{
-            return {
-                ...elm,
-                kind : translation[data.kind[elm.kind]]
-            }
-        });
-        return newData.reverse();
+        // const newData = data.data.map(elm=>{
+        //     return {
+        //         ...elm,
+        //         // kind : translation[data.kind[elm.kind]]
+        //     }
+        // });
+        return data;
     }
     catch(error) {
         alert("getPerformance : "+error)
     }
 }
 
-async function getAllData(id){
-    if (id === undefined ) throw new Error("id indefini");
-    store.userId = parseInt(id);
-    updateData({mainInformation : await getMainInformation(store.userId)});
-    if (!store.mainInformation)throw new Error("id non pris en charge");
-    updateData({mainActivity : await getMainActivity(store.userId)});
-    updateData({averageSessions : await getAverageSessions(store.userId)});
-    updateData({activityType : await getPerformance(store.userId)});
+// async function getAllData(id){
+//     if (id === undefined ) throw new Error("id indefini");
+//     store.userId = parseInt(id);
+//     updateData({mainInformation : await getMainInformation(store.userId)});
+//     if (!store.mainInformation)throw new Error("id non pris en charge");
+//     updateData({mainActivity : await getMainActivity(store.userId)});
+//     updateData({averageSessions : await getAverageSessions(store.userId)});
+//     updateData({activityType : await getPerformance(store.userId)});
 
-    return store;
-}
-
-// function doesIdExist(id){
-//     let idStatus = false
-//     if (USER_MAIN_DATA.filter((user) => user.userId === parseInt(id)).length > 0){
-//         return idStatus = true
-//     }
-    
-//     console.log(idStatus)
+//     return store;
 // }
 
-function updateData(newData){
-    store = {
-        ...store,
-        ...newData
+/**
+ * Get and format all necessary data
+ *
+ * @param   {Number}  id  [id description]
+ *
+ * @return  {Promise}  Object with all necessary formatted data
+ */
+async function getAllData2(id){
+    if (id === undefined) {
+        throw new Error("id indefini");
     }
+    let user = new User(await getMainInformation(id));
+    user.setUserActivity(await getMainActivity(id));
+    user.setUserSessions(await getAverageSessions(id));
+    user.setUserPerformance(await getPerformance(id));
+    console.log(user)
+    return user;
 }
 
+// function updateData(newData){
+//     store = {
+//         ...store,
+//         ...newData
+//     }
+// }
+
 export{
-    getAllData,
+    // getAllData,
+    getAllData2
     // doesIdExist
 }</code></pre>
         </article>
@@ -203,13 +193,13 @@ export{
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#CreateBarChart">CreateBarChart</a></li><li><a href="global.html#CreateLineChart">CreateLineChart</a></li><li><a href="global.html#CreateRadarChart">CreateRadarChart</a></li><li><a href="global.html#CreateRadialChart">CreateRadialChart</a></li><li><a href="global.html#days">days</a></li><li><a href="global.html#extractFromMockedData">extractFromMockedData</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getMainActivity">getMainActivity</a></li><li><a href="global.html#getMainInformation">getMainInformation</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#Keydata">Keydata</a></li><li><a href="global.html#translation">translation</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#CreateBarChart">CreateBarChart</a></li><li><a href="global.html#CreateLineChart">CreateLineChart</a></li><li><a href="global.html#CreateRadarChart">CreateRadarChart</a></li><li><a href="global.html#CreateRadialChart">CreateRadialChart</a></li><li><a href="global.html#extractFromMockedData">extractFromMockedData</a></li><li><a href="global.html#getAllData2">getAllData2</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getMainActivity">getMainActivity</a></li><li><a href="global.html#getMainInformation">getMainInformation</a></li><li><a href="global.html#getPerformance">getPerformance</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Keydata">Keydata</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#setUserActivity">setUserActivity</a></li><li><a href="global.html#setUserPerformance">setUserPerformance</a></li><li><a href="global.html#setUserSessions">setUserSessions</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Jul 29 2022 14:38:15 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri Aug 05 2022 08:29:39 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

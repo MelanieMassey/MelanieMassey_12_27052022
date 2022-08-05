@@ -1,6 +1,7 @@
 import './RadialChart.css'
 import { RadialBarChart, RadialBar, ResponsiveContainer } from 'recharts';
 import propTypes from 'prop-types';
+import React from 'react';
 
 /**
  * Creates a Radial Chart
