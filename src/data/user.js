@@ -5,15 +5,27 @@ export default class User {
      *
      * @param   {Object}  infos  [Main information of the user]
      * @param   {Number}  infos.id [Id of the user]
+     * @param   {Number}  infos.userId [Id of the user]
      * @param   {Object}  infos.userInfos [Age, firstname et lastname of the user]
      * @param   {Number}  infos.score [Today score of the user]
+     * @param   {Number}  infos.todayScore [Today score of the user]
      * @param   {Object}  infos.keyData [Key data of the user: calorieCount, carbohydrateCount, lipidCount, proteinCount]
      */
-    constructor(infos) {
-        this.userId = infos.id;
-        this.userInfos = infos.userInfos;
-        this.todayScore = infos.score;
-        this.keyData = infos.keyData
+    constructor(infos, mocked) {
+        console.log(infos, mocked)
+        
+        if (mocked === false) {
+            this.userId = infos.id;
+            this.userInfos = infos.userInfos;
+            this.todayScore = infos.score;
+            this.keyData = infos.keyData
+        } else {
+            this.userId = infos.userId;
+            this.userInfos = infos.userInfos;
+            this.todayScore = infos.todayScore;
+            this.keyData = infos.keyData
+        }
+        
         
         this.days = {
             1:'L',
@@ -54,6 +66,7 @@ export default class User {
      * @return  Formatted array of the user's average sessions 
      */
     setUserSessions(userSessions) {
+        console.log(userSessions)
         userSessions.sessions.forEach(session => {
             session.day = this.days[session.day];
         });

@@ -53,7 +53,7 @@ function App() {
     navigate("/user/12", {replace: true})
   }
   if (error) {
-    // navigate("/404", {replace: true})
+    navigate("/404", {replace: true})
   }
   if (pageState === null) {
     return <Loader/>;
