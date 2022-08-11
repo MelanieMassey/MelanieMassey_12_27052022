@@ -1,3 +1,21 @@
+# SportSee
+
+Project #12 - Développez un tableau de bord d'analytics avec React
+
+
+
+## Prerequisites
+
+npm
+NodeJs
+VSCode recommended
+
+## Installation
+
+Clone the following repository: https://github.com/Naniiiiiie/MelanieMassey_12_27052022
+Install the necessary dependancy: npm install
+Run the project: npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

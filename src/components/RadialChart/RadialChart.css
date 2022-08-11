@@ -32,3 +32,12 @@
     color: var(--darkText);
     font-weight: 700;
 }
+
+@media screen and (max-width:1200px) {
+    .todayScore h2 {
+        
+        top: 1%;
+        left: 4%;
+    }
+    
+}

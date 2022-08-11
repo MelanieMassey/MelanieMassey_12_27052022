@@ -90,7 +90,15 @@ aside {
     margin: 0 50px 50px 120px;
     padding-top: 50px;
   }
+  h1 {
+    font-size: 42px;
+    margin: 0;
+    padding: 2rem 0 1rem;
+  }
   .dashboardContent {
     gap: 15px;
+  }
+  .dashboardHeader p {
+    margin-top: 0;
   }
 }

@@ -12,8 +12,6 @@ export default class User {
      * @param   {Object}  infos.keyData [Key data of the user: calorieCount, carbohydrateCount, lipidCount, proteinCount]
      */
     constructor(infos, mocked) {
-        console.log(infos, mocked)
-        
         if (mocked === false) {
             this.userId = infos.id;
             this.userInfos = infos.userInfos;

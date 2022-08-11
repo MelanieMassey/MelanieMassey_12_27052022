@@ -1,10 +1,8 @@
 import {USER_ACTIVITY, USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} from "./data.js";
 import axios from "axios";
-import User from "./user.js";
+import User from "./User.js";
 
 const mocked = false; // window.location.search === "?mocked"
-
-// let store = {};
 
 if (!mocked){
     axios.defaults.baseURL = 'https://calm-gorge-80201.herokuapp.com/';
@@ -28,8 +26,6 @@ function extractFromMockedData(data, id){
             return data[key];
         }
     }
-    
-    // throw new Error("l'id n'existe pas");
 }
 
 /**
@@ -40,16 +36,13 @@ function extractFromMockedData(data, id){
  * @return  {Promise}  User main information
  */
 async function getMainInformation(userId){
-
     try{
         if (mocked) {
             console.log(USER_MAIN_DATA, typeof(userId))
             return extractFromMockedData(USER_MAIN_DATA, userId);
         }
         const response = await axios.get("user/"+userId);
-        console.log("responde getMainInformation = " + response)
         return response.data.data;
-        
     }
     catch(error){
         alert("getMainInformation : "+error)
@@ -85,13 +78,11 @@ async function getMainActivity(userId){
 async function getAverageSessions(userId) {
     try{
         if (mocked) {
-            console.log(extractFromMockedData(USER_AVERAGE_SESSIONS, userId))
             return extractFromMockedData(USER_AVERAGE_SESSIONS, userId);
         }
         const response = await axios.get("user/"+userId+"/average-sessions");
         console.log(response);
         return response.data.data;
-
 
         // const data = mocked? extractFromMockedData(USER_AVERAGE_SESSIONS, userId) : (await axios.get("user/"+userId+"/average-sessions")).data.data;
         // console.log(data)
@@ -110,11 +101,16 @@ async function getAverageSessions(userId) {
  * @return  {Promise}  User performance data
  */
 async function getPerformance(userId){
-    console.log(USER_PERFORMANCE[0].data[0])
     try{
-        const data = mocked? extractFromMockedData(USER_PERFORMANCE, userId) : (await axios.get("user/"+userId+"/performance")).data.data;
-        console.log(data)
-        return data;
+        if (mocked) {
+            return extractFromMockedData(USER_PERFORMANCE, userId);
+        }
+        const response = await axios.get("user/"+userId+"/performance");
+        return response.data.data
+        
+        // const data = mocked? extractFromMockedData(USER_PERFORMANCE, userId) : (await axios.get("user/"+userId+"/performance")).data.data;
+        // console.log(data)
+        // return data;
     }
     catch(error) {
         alert("getPerformance : "+error)

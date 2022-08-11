@@ -2,6 +2,7 @@
 import './Header.css'
 import logo from '../../assets/logo.png'
 import React from 'react';
+
 /**
  * 
  * @returns Header component of the web application
@@ -17,5 +18,6 @@ function Header() {
         </header>
     )
 }
+
 
 export default Header;
