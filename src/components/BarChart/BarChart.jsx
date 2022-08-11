@@ -70,7 +70,7 @@ function CreateBarChart(props) {
                     domain={['dataMin-50','dataMax+50']}
                     hide={true} 
                 />
-                <Tooltip content={<CustomTooltip/>}/>
+                <Tooltip content={<CustomTooltip active="any" payload="any"/>}/>
                 {/* <Legend /> */}
                 <Bar dataKey={props.data1} yAxisId='kilogram' fill="#282D30" barSize={10}  radius={[5,5,0,0]}/>
                 <Bar dataKey={props.data2} yAxisId='calories' fill="#E60000" barSize={10}  radius={[5,5,0,0]}/>

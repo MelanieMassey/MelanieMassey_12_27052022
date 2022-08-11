@@ -3,7 +3,6 @@ import './style/App.css';
 import {getAllData2} from './data/dataManager';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
 // Assets
 import imgMeditation from './assets/meditation.png';
 import imgSwimming from './assets/swimming.png';
@@ -47,7 +46,6 @@ function App() {
       }
     })()
   }, [userId])
-
   
   if (userId === undefined) {
     navigate("/user/12", {replace: true})

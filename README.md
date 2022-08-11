@@ -3,11 +3,10 @@
 Project #12 - Develop an analytics dashboard using React
 
 
-
 ## Prerequisites
 
-- npm
-- NodeJs
+- npm 6.14.15
+- NodeJs v14.17.6
 - VSCode recommended
 
 ## Installation

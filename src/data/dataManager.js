@@ -160,5 +160,4 @@ async function getAllData2(id){
 export{
     // getAllData,
     getAllData2
-    // doesIdExist
 }

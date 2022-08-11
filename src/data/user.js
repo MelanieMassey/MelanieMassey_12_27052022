@@ -1,4 +1,5 @@
 /** Class formatting data from API */
+
 export default class User {
     /**
      * Get data
