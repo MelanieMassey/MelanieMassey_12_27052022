@@ -35,7 +35,7 @@ h2 {
     color: var(--main);
 }
 
-.custom-tooltip {
+.barchart-custom-tooltip {
     background-color: var(--main);
     width: 39px;
     height: 63px;
@@ -46,7 +46,7 @@ h2 {
     align-items: center;
 }
 
-.custom-tooltip p {
+.barchart-custom-tooltip p {
     color: var(--lightText);
     font-size: 7px;
     margin: 5px;

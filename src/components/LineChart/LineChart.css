@@ -17,13 +17,17 @@
     opacity: 0.5;
 }
 
-.custom-tooltip {
+.linechart-custom-tooltip {
     width: 39px;
     height: 25px;
     background-color: var(--lightText);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
-.custom-tooltip p {
+.linechart-custom-tooltip p {
     font-size: 7px;
     color: var(--darkText);
 

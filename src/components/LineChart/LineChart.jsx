@@ -16,7 +16,7 @@ function CreateLineChart(props) {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
           return (
-            <div className="custom-tooltip">
+            <div className="linechart-custom-tooltip">
               <p className="tooltipKg">{`${payload[0].value} min`}</p>
             </div>
           );
