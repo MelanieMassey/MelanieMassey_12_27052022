@@ -6,9 +6,9 @@ Project #12 - Développez un tableau de bord d'analytics avec React
 
 ## Prerequisites
 
-npm
-NodeJs
-VSCode recommended
+> npm
+- NodeJs
+- VSCode recommended
 
 ## Installation
 
