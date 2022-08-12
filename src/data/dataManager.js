@@ -19,11 +19,13 @@ if (!mocked){
 function extractFromMockedData(data, id){
     for (const key in data){
         if (data[key].userId === id) {
-            
-            console.log(typeof(JSON.stringify(data[key])))
-            console.log(JSON.parse(JSON.stringify(data[key])))
+            // Notions de passage par référence et par valeur
+            // JSON.stringify => chaine de caractère / string
+            // JSON.parse => retransforme en objet
+            // Permet de résoudre le bug de données kind et day = "undefined" avec le return d'orgine
             return JSON.parse(JSON.stringify(data[key]));
             // return {...data[key]};
+            
         }
     }
 }
