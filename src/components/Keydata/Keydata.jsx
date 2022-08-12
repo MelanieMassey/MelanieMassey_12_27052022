@@ -12,9 +12,7 @@ import React from 'react';
  * @returns React Component Keydata
  */
 function Keydata({className, img, data, dataType}) {
-    
     return(
-        
         <div className={"keyData " + className}>
             <div className={"dataImg " + className + "Background"}>
                 <img className={className + "Img"} src={img} alt={className}/>
@@ -23,7 +21,6 @@ function Keydata({className, img, data, dataType}) {
                 <p>{data}</p>
                 <p>{dataType}</p>
             </div>
-            
         </div>
     )
 }

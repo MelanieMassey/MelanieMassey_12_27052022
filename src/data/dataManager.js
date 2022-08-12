@@ -2,7 +2,7 @@ import {USER_ACTIVITY, USER_MAIN_DATA, USER_AVERAGE_SESSIONS, USER_PERFORMANCE} 
 import axios from "axios";
 import User from "./User.js";
 
-const mocked = false; // window.location.search === "?mocked"
+const mocked = true; // window.location.search === "?mocked"
 
 if (!mocked){
     axios.defaults.baseURL = 'https://calm-gorge-80201.herokuapp.com/';
@@ -17,13 +17,13 @@ if (!mocked){
  * @return  {Object}        User data
  */
 function extractFromMockedData(data, id){
-    console.log(data)
     for (const key in data){
-        console.log(typeof(key))
         if (data[key].userId === id) {
-            console.log(data[key])
-            console.log(data[0])
-            return data[key];
+            
+            console.log(typeof(JSON.stringify(data[key])))
+            console.log(JSON.parse(JSON.stringify(data[key])))
+            return JSON.parse(JSON.stringify(data[key]));
+            // return {...data[key]};
         }
     }
 }
@@ -145,7 +145,8 @@ async function getAllData2(id){
     console.log(await getAverageSessions(idNumber))
     user.setUserActivity(await getMainActivity(idNumber));
     user.setUserSessions(await getAverageSessions(idNumber));
-    user.setUserPerformance(await getPerformance(idNumber));
+    let userPerformance = await getPerformance(idNumber);
+    user.setUserPerformance(userPerformance);
     console.log(user)
     return user;
 }

@@ -25,9 +25,8 @@ import Loader from './components/Loader/Loader';
 function App() {
   const { userId } = useParams();
   let navigate = useNavigate();
+  
   const [error, setError] = useState(false);
-  // console.log(userId)
-
   const [pageState, setPageState] = useState({userInfos: {}, sessionsActivity: [], sessionsAverage: [], performance: [], todayScore: 0, keyData: {}});
   const [loading, setLoading] = useState(false);
 
@@ -36,7 +35,6 @@ function App() {
     (async ()=>{
       try{
         const newPageData = await getAllData2(userId);
-        // console.log(newPageData)
         setPageState(newPageData);
         setLoading(true);
       }
